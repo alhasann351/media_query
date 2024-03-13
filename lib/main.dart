@@ -55,9 +55,18 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
       ),*/
-      body: Builder(
+      /*body: Builder(
         builder: (context) {
           if (_mediaQuery.orientation == Orientation.portrait) {
+            return portraitWidget(_mediaQuery.size);
+          } else {
+            return landscapeWidget(_mediaQuery.size);
+          }
+        },
+      ),*/
+      body: OrientationBuilder(
+        builder: (context, orientation) {
+          if (orientation == Orientation.portrait) {
             return portraitWidget(_mediaQuery.size);
           } else {
             return landscapeWidget(_mediaQuery.size);
