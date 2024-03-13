@@ -40,7 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
       ),
-      body: Row(
+      /*body: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
@@ -54,6 +54,51 @@ class _MyHomePageState extends State<MyHomePage> {
             color: Colors.red,
           ),
         ],
+      ),*/
+      body: Builder(
+        builder: (context) {
+          if (_mediaQuery.orientation == Orientation.portrait) {
+            return portraitWidget(_mediaQuery.size);
+          } else {
+            return landscapeWidget(_mediaQuery.size);
+          }
+        },
+      ),
+    );
+  }
+
+  Widget portraitWidget(Size size) {
+    return Container(
+      color: Colors.green,
+      height: size.height * 0.7,
+      width: size.width * 0.7,
+      child: const Center(
+        child: Text(
+          'Portrait',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 22,
+            color: Colors.white,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget landscapeWidget(Size size) {
+    return Container(
+      color: Colors.blue,
+      height: size.height * 0.3,
+      width: size.width * 0.5,
+      child: const Center(
+        child: Text(
+          'Landscape',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 22,
+            color: Colors.white,
+          ),
+        ),
       ),
     );
   }
